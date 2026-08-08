@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WebGuard - Website Security Scanner</title>
+
+    <link rel="stylesheet" href="w.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🛡️ WebGuard
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#scanner">Scanner</a>
+            <a href="#about">About</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="tagline">
+                🔐 WEB SECURITY MADE SIMPLE
+            </p>
+
+            <h1>
+                Protect Your Website
+                <span>Before Attackers Do.</span>
+            </h1>
+
+            <p class="description">
+                WebGuard scans your website for common security
+                configuration issues and gives you an easy-to-understand
+                security report.
+            </p>
+
+            <a href="#scanner" class="start-btn">
+                Start Security Scan →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Scanner Section -->
+    <section class="scanner-section" id="scanner">
+
+        <div class="scanner-container">
+
+            <h2>
+                Website Security Scanner
+            </h2>
+
+            <p>
+                Enter your website URL to start a security assessment.
+            </p>
+
+            <div class="scanner-box">
+
+                <input
+                    type="url"
+                    class="url-input"
+                    placeholder="https://example.com"
+                    id="websiteUrl"
+                >
+
+                <button class="scan-btn" id="scanButton">
+                    🔍 Scan Website
+                </button>
+
+            </div>
+
+            <p class="scan-message" id="scanMessage"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Security Score Section -->
+    <section class="dashboard">
+
+        <h2>
+            Security Overview
+        </h2>
+
+        <div class="score-card">
+
+            <div class="score-circle">
+                <span id="securityScore">--</span>
+                <small>/100</small>
+            </div>
+
+            <div class="score-info">
+
+                <h3 id="riskLevel">
+                    Waiting for Scan
+                </h3>
+
+                <p>
+                    Your security score will appear here
+                    after scanning.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Security Checks -->
+    <section class="checks-section">
+
+        <h2>
+            Security Checks
+        </h2>
+
+        <div class="checks-container">
+
+            <div class="check-card">
+
+                <div class="check-icon">
+                    🔒
+                </div>
+
+                <div>
+                    <h3>HTTPS</h3>
+                    <p id="httpsStatus">
+                        Not Checked
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="check-card">
+
+                <div class="check-icon">
+                    🛡️
+                </div>
+
+                <div>
+                    <h3>HSTS</h3>
+                    <p id="hstsStatus">
+                        Not Checked
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="check-card">
+
+                <div class="check-icon">
+                    🔐
+                </div>
+
+                <div>
+                    <h3>Content Security Policy</h3>
+                    <p id="cspStatus">
+                        Not Checked
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="check-card">
+
+                <div class="check-icon">
+                    🧱
+                </div>
+
+                <div>
+                    <h3>X-Frame-Options</h3>
+                    <p id="frameStatus">
+                        Not Checked
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="check-card">
+
+                <div class="check-icon">
+                    📦
+                </div>
+
+                <div>
+                    <h3>X-Content-Type-Options</h3>
+                    <p id="contentTypeStatus">
+                        Not Checked
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="check-card">
+
+                <div class="check-icon">
+                    🔄
+                </div>
+
+                <div>
+                    <h3>HTTPS Redirect</h3>
+                    <p id="redirectStatus">
+                        Not Checked
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Vulnerability Report -->
+    <section class="report-section">
+
+        <h2>
+            Vulnerability Report
+        </h2>
+
+        <div class="report-container" id="reportContainer">
+
+            <div class="empty-report">
+
+                <div class="report-icon">
+                    🔍
+                </div>
+
+                <h3>
+                    No Scan Available
+                </h3>
+
+                <p>
+                    Run a security scan to see detected
+                    vulnerabilities and recommendations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI Explanation -->
+    <section class="ai-section">
+
+        <div class="ai-container">
+
+            <div class="ai-icon">
+                🤖
+            </div>
+
+            <div class="ai-content">
+
+                <h2>
+                    AI Security Assistant
+                </h2>
+
+                <p>
+                    Get simple explanations of security issues
+                    and recommended remediation steps.
+                </p>
+
+                <button class="ai-btn" id="aiButton">
+                    Explain Security Issues
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section class="about-section" id="about">
+
+        <h2>
+            About WebGuard
+        </h2>
+
+        <p>
+            WebGuard is a defensive website security assessment
+            tool designed to identify common security configuration
+            weaknesses and present them in an easy-to-understand format.
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            🛡️ WebGuard © 2026
+        </p>
+
+        <p>
+            Built for learning and defensive security assessment.
+        </p>
+
+    </footer>
+
+
+    <script src="w.js"></script>
+
+</body>
+
+</html>
