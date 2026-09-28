@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="PixelPro is a responsive and performance-optimized frontend website.">
+
+    <title>PixelPro - Performance Optimized Website</title>
+
+    <!-- Optimized CSS -->
+    <link rel="stylesheet" href="f.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+
+            <a href="#" class="logo">PixelPro</a>
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <p class="tagline">FAST • MODERN • RESPONSIVE</p>
+
+                <h1>Build Better Digital Experiences</h1>
+
+                <p>
+                    PixelPro is a modern frontend website designed with
+                    performance, responsiveness and user experience in mind.
+                </p>
+
+                <a href="#features" class="btn">Explore Features</a>
+
+            </div>
+
+            <div class="hero-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=75"
+                    alt="Modern workspace"
+                    width="900"
+                    height="600"
+                    fetchpriority="high">
+
+            </div>
+
+        </section>
+
+
+        <!-- Features -->
+        <section class="features" id="features">
+
+            <div class="section-heading">
+                <p class="tagline">WHY PIXELPRO</p>
+                <h2>Our Features</h2>
+                <p>
+                    Everything you need for a smooth and efficient
+                    frontend experience.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+
+                <article class="card">
+
+                    <div class="icon">⚡</div>
+
+                    <h3>Fast Performance</h3>
+
+                    <p>
+                        Optimized assets and efficient code help improve
+                        page loading and rendering performance.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="icon">📱</div>
+
+                    <h3>Responsive Design</h3>
+
+                    <p>
+                        The website automatically adapts to desktop,
+                        tablet and mobile screen sizes.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="icon">🔒</div>
+
+                    <h3>Clean Code</h3>
+
+                    <p>
+                        Organized HTML, CSS and JavaScript make the
+                        project easier to maintain and optimize.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- About -->
+        <section class="about" id="about">
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=70"
+                    alt="Team working together"
+                    width="800"
+                    height="533"
+                    loading="lazy">
+
+            </div>
+
+            <div class="about-content">
+
+                <p class="tagline">ABOUT PROJECT</p>
+
+                <h2>Performance Comes First</h2>
+
+                <p>
+                    This project demonstrates frontend performance
+                    optimization techniques including lazy loading,
+                    deferred JavaScript, optimized images, efficient
+                    CSS and reduced unnecessary DOM elements.
+                </p>
+
+                <a href="#contact" class="btn">Get Started</a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+
+            <div class="section-heading">
+
+                <p class="tagline">GET IN TOUCH</p>
+
+                <h2>Contact Us</h2>
+
+                <p>
+                    Have a project idea? Let's create something amazing.
+                </p>
+
+            </div>
+
+            <form class="contact-form" id="contactForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required>
+
+                <textarea
+                    id="message"
+                    rows="5"
+                    placeholder="Your Message"
+                    required></textarea>
+
+                <button type="submit" class="btn">
+                    Send Message
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            © 2026 PixelPro. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript loaded after HTML parsing -->
+    <script src="f.js" defer></script>
+
+</body>
+</html>
