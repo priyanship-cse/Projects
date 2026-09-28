@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="AccessiBlog - Technology, Web Development and Accessibility Blog">
+
+    <title>AccessiBlog - Technology & Web Development</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Skip Link for Keyboard Users -->
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+    <!-- Header -->
+    <header class="site-header">
+
+        <div class="container header-container">
+
+            <a href="#home" class="logo" aria-label="AccessiBlog Home">
+                AccessiBlog
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="primary-navigation">
+
+                <span class="sr-only">
+                    Toggle navigation menu
+                </span>
+
+                <span aria-hidden="true">☰</span>
+
+            </button>
+
+            <!-- Navigation -->
+            <nav
+                id="primary-navigation"
+                class="primary-nav"
+                aria-label="Primary navigation">
+
+                <ul>
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#articles">Articles</a>
+                    </li>
+
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- Hero Section -->
+        <section
+            id="home"
+            class="hero"
+            aria-labelledby="hero-title">
+
+            <div class="container">
+
+                <p class="eyebrow">
+                    Technology • Design • Accessibility
+                </p>
+
+                <h1 id="hero-title">
+                    Building Better Experiences for Everyone
+                </h1>
+
+                <p>
+                    Explore practical ideas about web development,
+                    user experience and inclusive digital design.
+                </p>
+
+                <a href="#articles" class="button">
+                    Explore Articles
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Articles Section -->
+        <section
+            id="articles"
+            class="articles-section"
+            aria-labelledby="articles-title">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Latest Stories
+                        </p>
+
+                        <h2 id="articles-title">
+                            Featured Articles
+                        </h2>
+
+                    </div>
+
+
+                    <!-- Article Filter -->
+                    <div class="filter-wrapper">
+
+                        <label for="category-filter">
+                            Filter by category
+                        </label>
+
+                        <select id="category-filter">
+
+                            <option value="all">
+                                All Articles
+                            </option>
+
+                            <option value="accessibility">
+                                Accessibility
+                            </option>
+
+                            <option value="web">
+                                Web Development
+                            </option>
+
+                            <option value="ux">
+                                UX Design
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Dynamic Status -->
+                <div
+                    id="article-status"
+                    class="status"
+                    role="status"
+                    aria-live="polite">
+
+                    Showing all articles.
+
+                </div>
+
+
+                <!-- Article Cards -->
+                <div id="article-list" class="article-grid">
+
+
+                    <!-- Article 1 -->
+                    <article
+                        class="card"
+                        data-category="accessibility">
+
+                        <div class="card-content">
+
+                            <p class="tag">
+                                Accessibility
+                            </p>
+
+                            <h3>
+                                Why Keyboard Navigation Matters
+                            </h3>
+
+                            <p>
+                                Learn how visible focus indicators
+                                and logical tab order help keyboard
+                                and assistive-technology users
+                                navigate websites.
+                            </p>
+
+                            <button
+                                class="read-more"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="article-1-details">
+
+                                Read More
+
+                            </button>
+
+                            <div
+                                id="article-1-details"
+                                class="details"
+                                hidden>
+
+                                <p>
+                                    A well-designed interface should
+                                    allow users to reach every
+                                    interactive control without
+                                    requiring a mouse.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Article 2 -->
+                    <article
+                        class="card"
+                        data-category="web">
+
+                        <div class="card-content">
+
+                            <p class="tag">
+                                Web Development
+                            </p>
+
+                            <h3>
+                                Semantic HTML for Stronger Structure
+                            </h3>
+
+                            <p>
+                                Discover why headings, landmarks,
+                                lists, articles and buttons provide
+                                meaningful structure for users and
+                                assistive technologies.
+                            </p>
+
+                            <button
+                                class="read-more"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="article-2-details">
+
+                                Read More
+
+                            </button>
+
+                            <div
+                                id="article-2-details"
+                                class="details"
+                                hidden>
+
+                                <p>
+                                    Semantic elements communicate
+                                    purpose and make pages easier
+                                    to understand and navigate.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Article 3 -->
+                    <article
+                        class="card"
+                        data-category="ux">
+
+                        <div class="card-content">
+
+                            <p class="tag">
+                                UX Design
+                            </p>
+
+                            <h3>
+                                Designing Clear and Usable Forms
+                            </h3>
+
+                            <p>
+                                Good labels, helpful instructions,
+                                error messages and focus states
+                                can make forms easier for everyone.
+                            </p>
+
+                            <button
+                                class="read-more"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="article-3-details">
+
+                                Read More
+
+                            </button>
+
+                            <div
+                                id="article-3-details"
+                                class="details"
+                                hidden>
+
+                                <p>
+                                    Clear form controls reduce
+                                    confusion and improve usability
+                                    for keyboard and screen-reader
+                                    users.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- About Section -->
+        <section
+            id="about"
+            class="info-section"
+            aria-labelledby="about-title">
+
+            <div class="container narrow">
+
+                <p class="eyebrow">
+                    About the Project
+                </p>
+
+                <h2 id="about-title">
+                    Accessibility is Part of Good UX
+                </h2>
+
+                <p>
+                    This project applies semantic HTML,
+                    keyboard-friendly interactions, visible
+                    focus states, accessible names, live-region
+                    feedback and responsive layouts.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contact Section -->
+        <section
+            id="contact"
+            class="contact-section"
+            aria-labelledby="contact-title">
+
+            <div class="container narrow">
+
+                <p class="eyebrow">
+                    Get in Touch
+                </p>
+
+                <h2 id="contact-title">
+                    Contact the Team
+                </h2>
+
+
+                <form id="contact-form" novalidate>
+
+                    <!-- Name -->
+                    <div class="form-group">
+
+                        <label for="name">
+                            Name <span aria-hidden="true">*</span>
+                        </label>
+
+                        <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            autocomplete="name"
+                            required>
+
+                        <p
+                            id="name-error"
+                            class="error"
+                            aria-live="polite">
+                        </p>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email <span aria-hidden="true">*</span>
+                        </label>
+
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            required>
+
+                        <p
+                            id="email-error"
+                            class="error"
+                            aria-live="polite">
+                        </p>
+
+                    </div>
+
+
+                    <!-- Message -->
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message <span aria-hidden="true">*</span>
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            required>
+                        </textarea>
+
+                        <p
+                            id="message-error"
+                            class="error"
+                            aria-live="polite">
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="button">
+
+                        Send Message
+
+                    </button>
+
+
+                    <p
+                        id="form-status"
+                        class="status"
+                        role="status"
+                        aria-live="polite">
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <p>
+                © 2026 AccessiBlog.
+                Built with accessibility in mind.
+            </p>
+
+            <a href="#main-content">
+                Back to main content
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```
