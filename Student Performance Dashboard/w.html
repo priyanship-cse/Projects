@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
     <meta name="description"
-        content="Student Performance Dashboard with interactive data, filtering and sorting.">
+        content="Student Performance Dashboard with quiz, assignment, marks and attendance tracking.">
 
     <title>Student Performance Dashboard</title>
 
@@ -19,15 +18,13 @@
     <!-- Header -->
     <header class="topbar">
         <div class="header-content">
-
-            <p class="eyebrow">WEEK 5 • FINAL PROJECT</p>
+            <p class="eyebrow"> PROJECT</p>
 
             <h1>Student Performance Dashboard</h1>
 
             <p class="subtitle">
-                A responsive and interactive mini web application.
+                Track student quiz, assignment, marks and attendance.
             </p>
-
         </div>
     </header>
 
@@ -36,7 +33,7 @@
     <main class="container">
 
         <!-- Summary Cards -->
-        <section class="stats" aria-label="Dashboard Summary">
+        <section class="stats">
 
             <article class="card stat">
                 <span>Total Students</span>
@@ -58,20 +55,140 @@
                 <strong id="excellent">0</strong>
             </article>
 
+            <article class="card stat">
+                <span>Average Quiz</span>
+                <strong id="avgQuiz">0/20</strong>
+            </article>
+
+            <article class="card stat">
+                <span>Average Assignment</span>
+                <strong id="avgAssignment">0/20</strong>
+            </article>
+
+        </section>
+
+
+        <!-- Add Student -->
+        <section class="card add-student">
+
+            <h2>Add Student</h2>
+
+            <p class="form-info">
+                Enter student performance details.
+            </p>
+
+            <form id="studentForm">
+
+                <div class="form-grid">
+
+                    <label>
+                        Student Name
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter name"
+                            required>
+                    </label>
+
+                    <label>
+                        Course
+                        <input
+                            type="text"
+                            id="course"
+                            placeholder="CSE"
+                            required>
+                    </label>
+
+                    <label>
+                        Semester
+                        <input
+                            type="number"
+                            id="semester"
+                            min="1"
+                            max="8"
+                            placeholder="2"
+                            required>
+                    </label>
+
+                    <label>
+                        Quiz Marks
+                        <input
+                            type="number"
+                            id="quiz"
+                            min="0"
+                            max="20"
+                            placeholder="18"
+                            required>
+                    </label>
+
+                    <label>
+                        Assignment Marks
+                        <input
+                            type="number"
+                            id="assignment"
+                            min="0"
+                            max="20"
+                            placeholder="17"
+                            required>
+                    </label>
+
+                    <label>
+                        Overall Marks (%)
+                        <input
+                            type="number"
+                            id="marks"
+                            min="0"
+                            max="100"
+                            placeholder="90"
+                            required>
+                    </label>
+
+                    <label>
+                        Attendance (%)
+                        <input
+                            type="number"
+                            id="attendance"
+                            min="0"
+                            max="100"
+                            placeholder="95"
+                            required>
+                    </label>
+
+                </div>
+
+                <div class="form-buttons">
+
+                    <button
+                        type="submit"
+                        class="btn primary"
+                        id="submitBtn">
+                        Add Student
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn secondary"
+                        id="cancelBtn"
+                        style="display:none;">
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
         </section>
 
 
         <!-- Search and Filter -->
-        <section class="card controls" aria-labelledby="controlsTitle">
+        <section class="card controls">
 
             <div class="control-info">
 
-                <h2 id="controlsTitle">
-                    Explore Student Data
-                </h2>
+                <h2>Explore Student Data</h2>
 
                 <p>
-                    Search, filter and sort the student records.
+                    Search, filter and sort student records.
                 </p>
 
             </div>
@@ -79,25 +196,20 @@
 
             <div class="control-grid">
 
-                <!-- Search -->
                 <label>
                     Search Student
 
                     <input
                         type="search"
                         id="search"
-                        placeholder="Enter student name..."
-                        aria-label="Search students by name"
-                    >
+                        placeholder="Enter student name...">
                 </label>
 
 
-                <!-- Filter -->
                 <label>
                     Filter by Status
 
-                    <select id="statusFilter"
-                        aria-label="Filter students by status">
+                    <select id="statusFilter">
 
                         <option value="All">
                             All Statuses
@@ -120,12 +232,10 @@
                 </label>
 
 
-                <!-- Sort -->
                 <label>
                     Sort Students
 
-                    <select id="sortBy"
-                        aria-label="Sort student records">
+                    <select id="sortBy">
 
                         <option value="marks-desc">
                             Marks: High to Low
@@ -133,6 +243,22 @@
 
                         <option value="marks-asc">
                             Marks: Low to High
+                        </option>
+
+                        <option value="quiz-desc">
+                            Quiz: High to Low
+                        </option>
+
+                        <option value="quiz-asc">
+                            Quiz: Low to High
+                        </option>
+
+                        <option value="assignment-desc">
+                            Assignment: High to Low
+                        </option>
+
+                        <option value="assignment-asc">
+                            Assignment: Low to High
                         </option>
 
                         <option value="attendance-desc">
@@ -155,59 +281,41 @@
         <!-- Chart + Features -->
         <section class="grid-two">
 
-            <!-- Chart -->
-            <article class="card chart-card"
-                aria-labelledby="chartTitle">
+            <article class="card chart-card">
 
-                <h2 id="chartTitle">
-                    Marks Overview
-                </h2>
+                <h2>Marks Overview</h2>
 
                 <div
                     id="chart"
-                    class="chart"
-                    aria-label="Student marks bar chart">
+                    class="chart">
                 </div>
 
             </article>
 
 
-            <!-- Features -->
             <article class="card info-card">
 
-                <h2>
-                    Project Features
-                </h2>
+                <h2>Project Features</h2>
 
                 <ul>
 
-                    <li>
-                        Static JSON data
-                    </li>
+                    <li>Add Student</li>
 
-                    <li>
-                        JavaScript Fetch API
-                    </li>
+                    <li>Edit Student</li>
 
-                    <li>
-                        Search functionality
-                    </li>
+                    <li>Delete Student</li>
 
-                    <li>
-                        Filtering and sorting
-                    </li>
+                    <li>Quiz Marks</li>
 
-                    <li>
-                        Responsive design
-                    </li>
+                    <li>Assignment Marks</li>
 
-                    <li>
-                        Accessibility and ARIA
-                    </li>
+                    <li>Search & Filter</li>
 
-                    <li>
-                        Performance optimization
-                    </li>
+                    <li>Sorting</li>
+
+                    <li>Local Storage</li>
+
+                    <li>Responsive Design</li>
 
                 </ul>
 
@@ -216,21 +324,18 @@
         </section>
 
 
-        <!-- Data Table -->
-        <section class="card table-card"
-            aria-labelledby="tableTitle">
+        <!-- Student Records -->
+        <section class="card table-card">
 
             <div class="table-heading">
 
                 <div>
 
-                    <h2 id="tableTitle">
+                    <h2>
                         Student Records
                     </h2>
 
-                    <p
-                        id="resultCount"
-                        aria-live="polite">
+                    <p id="resultCount">
                         0 records
                     </p>
 
@@ -253,11 +358,17 @@
 
                             <th>Semester</th>
 
+                            <th>Quiz</th>
+
+                            <th>Assignment</th>
+
                             <th>Marks</th>
 
                             <th>Attendance</th>
 
                             <th>Status</th>
+
+                            <th>Actions</th>
 
                         </tr>
 
@@ -265,7 +376,6 @@
 
 
                     <tbody id="tableBody">
-
                     </tbody>
 
                 </table>
@@ -280,16 +390,15 @@
     <!-- Footer -->
     <footer>
 
-        Week 5 Mini Web Application
+         Mini Web Application
         <br>
 
-        Built using HTML, CSS, JavaScript and JSON
+        Built using HTML, CSS and JavaScript
 
     </footer>
 
 
-    <!-- JavaScript -->
-    <script src="w.js" defer></script>
+    <script src="w.js"></script>
 
 </body>
 

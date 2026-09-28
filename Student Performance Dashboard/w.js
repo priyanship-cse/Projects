@@ -1,183 +1,252 @@
-
+// =========================
+// STATE
+// =========================
 
 const state = {
-
     students: [],
-
-    filtered: []
-
+    filtered: [],
+    editingId: null
 };
 
 
-
+// =========================
+// GET ELEMENT
+// =========================
 
 const $ = (id) => {
-
     return document.getElementById(id);
-
 };
 
 
+// =========================
+// INITIAL DATA
+// =========================
 
-async function loadData() {
+const defaultStudents = [
+    {
+        id: 1,
+        name: "Priyanshi",
+        course: "CSE",
+        semester: 2,
+        quiz: 18,
+        assignment: 17,
+        marks: 92,
+        attendance: 94
+    },
 
-    try {
+    {
+        id: 2,
+        name: "Nishu",
+        course: "IT",
+        semester: 2,
+        quiz: 16,
+        assignment: 15,
+        marks: 84,
+        attendance: 89
+    },
 
-        const response = await fetch("data.json");
+    {
+        id: 3,
+        name: "Rahul",
+        course: "CSE",
+        semester: 2,
+        quiz: 19,
+        assignment: 18,
+        marks: 95,
+        attendance: 96
+    },
+
+    {
+        id: 4,
+        name: "Anjali",
+        course: "ECE",
+        semester: 2,
+        quiz: 14,
+        assignment: 13,
+        marks: 72,
+        attendance: 82
+    }
+];
 
 
-        if (!response.ok) {
+// =========================
+// LOAD FROM LOCAL STORAGE
+// =========================
 
-            throw new Error("Data could not be loaded");
+function loadStudents() {
 
-        }
+    const savedData =
+        localStorage.getItem("students");
 
+    if (savedData) {
 
-        state.students = await response.json();
+        state.students =
+            JSON.parse(savedData);
 
+    } else {
 
-        updateDashboard();
+        state.students =
+            defaultStudents;
 
+        saveStudents();
     }
 
-    catch (error) {
-
-        console.error(error);
-
-
-        $("tableBody").innerHTML = `
-
-            <tr>
-
-                <td colspan="6">
-
-                    Unable to load data.
-
-                    Please run this project using
-
-                    VS Code Live Server.
-
-                </td>
-
-            </tr>
-
-        `;
-
-    }
-
+    updateDashboard();
 }
 
 
-/* =========================
-   UPDATE DASHBOARD
-========================= */
+// =========================
+// SAVE DATA
+// =========================
+
+function saveStudents() {
+
+    localStorage.setItem(
+        "students",
+        JSON.stringify(state.students)
+    );
+}
+
+
+// =========================
+// GET STATUS
+// =========================
+
+function getStatus(marks) {
+
+    if (marks >= 85) {
+        return "Excellent";
+    }
+
+    if (marks >= 65) {
+        return "Good";
+    }
+
+    return "Needs Attention";
+}
+
+
+// =========================
+// AVERAGE
+// =========================
+
+function average(data, property) {
+
+    if (data.length === 0) {
+        return 0;
+    }
+
+    const total =
+        data.reduce(
+            (sum, student) =>
+                sum + Number(student[property]),
+            0
+        );
+
+    return Math.round(
+        total / data.length
+    );
+}
+
+
+// =========================
+// UPDATE DASHBOARD
+// =========================
 
 function updateDashboard() {
 
     const searchText =
-        $("search").value
+        $("search")
+            .value
             .trim()
             .toLowerCase();
 
-
     const status =
         $("statusFilter").value;
-
 
     const sort =
         $("sortBy").value;
 
 
-    /* Filtering */
+    // FILTER
 
     state.filtered =
-        state.students.filter(student => {
+        state.students.filter(
+            (student) => {
 
-            const matchesName =
-                student.name
-                    .toLowerCase()
-                    .includes(searchText);
+                const matchesName =
+                    student.name
+                        .toLowerCase()
+                        .includes(searchText);
 
+                const studentStatus =
+                    getStatus(
+                        Number(student.marks)
+                    );
 
-            const matchesStatus =
-                status === "All" ||
-                student.status === status;
+                const matchesStatus =
+                    status === "All" ||
+                    studentStatus === status;
 
-
-            return matchesName &&
-                   matchesStatus;
-
-        });
-
-
-    /* Sorting */
-
-    state.filtered.sort((a, b) => {
-
-        if (sort === "marks-desc") {
-
-            return b.marks - a.marks;
-
-        }
-
-
-        if (sort === "marks-asc") {
-
-            return a.marks - b.marks;
-
-        }
-
-
-        if (sort === "attendance-desc") {
-
-            return b.attendance -
-                   a.attendance;
-
-        }
-
-
-        if (sort === "name-asc") {
-
-            return a.name.localeCompare(
-                b.name
-            );
-
-        }
-
-    });
-
-
-    /* Average function */
-
-    function average(data, property) {
-
-        if (data.length === 0) {
-
-            return 0;
-
-        }
-
-
-        const total =
-            data.reduce(
-                (sum, student) =>
-                    sum + student[property],
-                0
-            );
-
-
-        return Math.round(
-            total / data.length
+                return (
+                    matchesName &&
+                    matchesStatus
+                );
+            }
         );
 
-    }
+
+    // SORT
+
+    state.filtered.sort(
+        (a, b) => {
+
+            if (sort === "marks-desc") {
+                return b.marks - a.marks;
+            }
+
+            if (sort === "marks-asc") {
+                return a.marks - b.marks;
+            }
+
+            if (sort === "quiz-desc") {
+                return b.quiz - a.quiz;
+            }
+
+            if (sort === "quiz-asc") {
+                return a.quiz - b.quiz;
+            }
+
+            if (sort === "assignment-desc") {
+                return b.assignment -
+                    a.assignment;
+            }
+
+            if (sort === "assignment-asc") {
+                return a.assignment -
+                    b.assignment;
+            }
+
+            if (sort === "attendance-desc") {
+                return b.attendance -
+                    a.attendance;
+            }
+
+            if (sort === "name-asc") {
+                return a.name.localeCompare(
+                    b.name
+                );
+            }
+
+            return 0;
+        }
+    );
 
 
-    /* Summary */
+    // SUMMARY
 
     $("totalStudents").textContent =
         state.students.length;
-
 
     $("avgMarks").textContent =
         average(
@@ -185,145 +254,422 @@ function updateDashboard() {
             "marks"
         ) + "%";
 
-
     $("avgAttendance").textContent =
         average(
             state.students,
             "attendance"
         ) + "%";
 
-
     $("excellent").textContent =
         state.students.filter(
             student =>
-                student.status ===
-                "Excellent"
+                getStatus(
+                    Number(student.marks)
+                ) === "Excellent"
         ).length;
 
+    $("avgQuiz").textContent =
+        average(
+            state.students,
+            "quiz"
+        ) + "/20";
 
-    /* Result count */
+    $("avgAssignment").textContent =
+        average(
+            state.students,
+            "assignment"
+        ) + "/20";
+
+
+    // RESULT COUNT
 
     $("resultCount").textContent =
+        `${state.filtered.length} record${
+            state.filtered.length === 1
+                ? ""
+                : "s"
+        }`;
 
-        `${state.filtered.length}
-        record${state.filtered.length === 1
-            ? ""
-            : "s"}`;
-
-
-    /* Table */
 
     renderTable();
-
-
-    /* Chart */
 
     renderChart(
         state.filtered
     );
-
 }
 
 
+// =========================
+// RENDER TABLE
+// =========================
 
 function renderTable() {
 
     if (state.filtered.length === 0) {
 
         $("tableBody").innerHTML = `
-
             <tr>
-
-                <td colspan="6">
-
+                <td colspan="9">
                     No matching records found.
-
                 </td>
-
             </tr>
-
         `;
 
         return;
-
     }
 
 
     $("tableBody").innerHTML =
+        state.filtered.map(
+            (student) => {
 
-        state.filtered.map(student => {
+                const status =
+                    getStatus(
+                        Number(student.marks)
+                    );
 
-            let badgeClass;
+
+                let badgeClass;
 
 
-            if (
-                student.status ===
-                "Excellent"
-            ) {
+                if (status === "Excellent") {
+                    badgeClass = "excellent";
+                }
+                else if (status === "Good") {
+                    badgeClass = "good";
+                }
+                else {
+                    badgeClass = "needs";
+                }
 
-                badgeClass = "excellent";
+
+                return `
+
+                    <tr>
+
+                        <td>
+                            ${student.name}
+                        </td>
+
+                        <td>
+                            ${student.course}
+                        </td>
+
+                        <td>
+                            ${student.semester}
+                        </td>
+
+                        <td>
+                            ${student.quiz}/20
+                        </td>
+
+                        <td>
+                            ${student.assignment}/20
+                        </td>
+
+                        <td>
+                            ${student.marks}%
+                        </td>
+
+                        <td>
+                            ${student.attendance}%
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="badge ${badgeClass}">
+                                ${status}
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="edit-btn"
+                                onclick="editStudent(${student.id})">
+                                Edit
+                            </button>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteStudent(${student.id})">
+                                Delete
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+            }
+        ).join("");
+}
+
+
+// =========================
+// ADD / EDIT STUDENT
+// =========================
+
+$("studentForm")
+    .addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const studentData = {
+
+                name:
+                    $("studentName")
+                        .value
+                        .trim(),
+
+                course:
+                    $("course")
+                        .value
+                        .trim(),
+
+                semester:
+                    Number(
+                        $("semester").value
+                    ),
+
+                quiz:
+                    Number(
+                        $("quiz").value
+                    ),
+
+                assignment:
+                    Number(
+                        $("assignment").value
+                    ),
+
+                marks:
+                    Number(
+                        $("marks").value
+                    ),
+
+                attendance:
+                    Number(
+                        $("attendance").value
+                    )
+            };
+
+
+            // EDIT
+
+            if (state.editingId !== null) {
+
+                const index =
+                    state.students.findIndex(
+                        student =>
+                            student.id ===
+                            state.editingId
+                    );
+
+
+                if (index !== -1) {
+
+                    state.students[index] = {
+                        id: state.editingId,
+                        ...studentData
+                    };
+
+                }
+
+                state.editingId = null;
+
+                $("submitBtn")
+                    .textContent =
+                    "Add Student";
+
+                $("cancelBtn")
+                    .style.display =
+                    "none";
 
             }
 
-            else if (
-                student.status ===
-                "Good"
-            ) {
-
-                badgeClass = "good";
-
-            }
+            // ADD
 
             else {
 
-                badgeClass = "needs";
+                const newStudent = {
 
+                    id:
+                        Date.now(),
+
+                    ...studentData
+                };
+
+                state.students.push(
+                    newStudent
+                );
             }
 
 
-            return `
+            saveStudents();
 
-                <tr>
+            $("studentForm").reset();
 
-                    <td>
-                        ${student.name}
-                    </td>
+            updateDashboard();
 
-                    <td>
-                        ${student.course}
-                    </td>
+        }
+    );
 
-                    <td>
-                        ${student.semester}
-                    </td>
 
-                    <td>
-                        ${student.marks}%
-                    </td>
+// =========================
+// EDIT STUDENT
+// =========================
 
-                    <td>
-                        ${student.attendance}%
-                    </td>
+function editStudent(id) {
 
-                    <td>
+    const student =
+        state.students.find(
+            student =>
+                student.id === id
+        );
 
-                        <span
-                            class="badge ${badgeClass}">
 
-                            ${student.status}
+    if (!student) {
+        return;
+    }
 
-                        </span>
 
-                    </td>
+    $("studentName").value =
+        student.name;
 
-                </tr>
+    $("course").value =
+        student.course;
 
-            `;
+    $("semester").value =
+        student.semester;
 
-        }).join("");
+    $("quiz").value =
+        student.quiz;
 
+    $("assignment").value =
+        student.assignment;
+
+    $("marks").value =
+        student.marks;
+
+    $("attendance").value =
+        student.attendance;
+
+
+    state.editingId = id;
+
+
+    $("submitBtn")
+        .textContent =
+        "Update Student";
+
+
+    $("cancelBtn")
+        .style.display =
+        "inline-block";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
+
+// =========================
+// CANCEL EDIT
+// =========================
+
+$("cancelBtn")
+    .addEventListener(
+        "click",
+        function () {
+
+            state.editingId = null;
+
+            $("studentForm").reset();
+
+            $("submitBtn")
+                .textContent =
+                "Add Student";
+
+            $("cancelBtn")
+                .style.display =
+                "none";
+        }
+    );
+
+
+// =========================
+// DELETE STUDENT
+// =========================
+
+function deleteStudent(id) {
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this student?"
+        );
+
+
+    if (!confirmDelete) {
+        return;
+    }
+
+
+    state.students =
+        state.students.filter(
+            student =>
+                student.id !== id
+        );
+
+
+    saveStudents();
+
+    updateDashboard();
+}
+
+
+// =========================
+// SEARCH
+// =========================
+
+$("search")
+    .addEventListener(
+        "input",
+        updateDashboard
+    );
+
+
+// =========================
+// FILTER
+// =========================
+
+$("statusFilter")
+    .addEventListener(
+        "change",
+        updateDashboard
+    );
+
+
+// =========================
+// SORT
+// =========================
+
+$("sortBy")
+    .addEventListener(
+        "change",
+        updateDashboard
+    );
+
+
+// =========================
+// CHART
+// =========================
 
 function renderChart(records) {
 
@@ -333,83 +679,53 @@ function renderChart(records) {
             "<p>No data available.</p>";
 
         return;
-
     }
 
 
-    const maxMarks = 100;
-
-
     $("chart").innerHTML =
+        records
+            .slice(0, 8)
+            .map(
+                student => {
 
-        records.slice(0, 8)
-            .map(student => {
-
-                const height =
-
-                    Math.max(
-                        4,
-                        (student.marks /
-                        maxMarks) * 180
-                    );
+                    const height =
+                        Math.max(
+                            4,
+                            (student.marks / 100) *
+                            180
+                        );
 
 
-                return `
-
-                    <div
-                        class="bar-item"
-                        title="${student.name}: ${student.marks}%">
-
-                        <span class="bar-value">
-
-                            ${student.marks}%
-
-                        </span>
-
+                    return `
 
                         <div
-                            class="bar"
-                            style="height:${height}px"
-                            aria-label="${student.name} scored ${student.marks} percent">
+                            class="bar-item"
+                            title="${student.name}: ${student.marks}%">
+
+                            <span class="bar-value">
+                                ${student.marks}%
+                            </span>
+
+                            <div
+                                class="bar"
+                                style="height:${height}px">
+                            </div>
+
+                            <span class="bar-label">
+                                ${student.name}
+                            </span>
 
                         </div>
 
-
-                        <span class="bar-label">
-
-                            ${student.name}
-
-                        </span>
-
-                    </div>
-
-                `;
-
-            })
+                    `;
+                }
+            )
             .join("");
-
 }
 
 
+// =========================
+// START
+// =========================
 
-
-$("search").addEventListener(
-    "input",
-    updateDashboard
-);
-
-
-$("statusFilter").addEventListener(
-    "change",
-    updateDashboard
-);
-
-
-$("sortBy").addEventListener(
-    "change",
-    updateDashboard
-);
-
-
-
-loadData();
+loadStudents();

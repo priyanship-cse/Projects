@@ -1,487 +1,84 @@
 /* =========================
-   GENERAL STYLING
+   ADD STUDENT FORM
 ========================= */
 
-* {
-    box-sizing: border-box;
-}
-
-
-html {
-    scroll-behavior: smooth;
-}
-
-
-body {
-    margin: 0;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background: #f4f6f8;
-
-    color: #18212b;
-
-    line-height: 1.5;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-.topbar {
-
-    background: #18212b;
-
-    color: white;
-
-    padding: 42px 20px;
-}
-
-
-.header-content {
-
-    max-width: 1100px;
-
-    margin: auto;
-}
-
-
-.eyebrow {
-
-    font-size: 0.78rem;
-
-    letter-spacing: 1.5px;
-
-    margin: 0 0 6px;
-
-    font-weight: bold;
-}
-
-
-.topbar h1 {
-
-    margin: 0;
-
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-}
-
-
-.subtitle {
-
-    margin-top: 8px;
-
-    color: #d9e1e8;
-}
-
-
-/* =========================
-   MAIN CONTAINER
-========================= */
-
-.container {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 28px 20px;
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.card {
-
-    background: white;
-
-    border: 1px solid #e1e6eb;
-
-    border-radius: 14px;
-
-    padding: 20px;
-
-    box-shadow:
-        0 4px 14px
-        rgba(24, 33, 43, 0.06);
-}
-
-
-/* =========================
-   SUMMARY CARDS
-========================= */
-
-.stats {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 16px;
-
+.add-student {
     margin-bottom: 18px;
 }
 
-
-.stat span {
-
-    color: #65717d;
-
-    font-size: 0.9rem;
-}
-
-
-.stat strong {
-
-    display: block;
-
-    font-size: 1.9rem;
-
-    margin-top: 4px;
-}
-
-
-/* =========================
-   CONTROLS
-========================= */
-
-.controls {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    align-items: end;
-
-    margin-bottom: 18px;
-}
-
-
-.controls h2 {
-
+.add-student h2 {
     margin: 0 0 4px;
 }
 
-
-.controls p {
-
-    margin: 0;
-
+.form-info {
+    margin-top: 0;
     color: #65717d;
-
     font-size: 0.9rem;
 }
 
-
-.control-grid {
-
+.form-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-
-    min-width: 60%;
-}
-
-
-label {
-
-    font-weight: bold;
-
-    font-size: 0.85rem;
-}
-
-
-input,
-select {
-
-    display: block;
-
-    width: 100%;
-
-    margin-top: 5px;
-
-    padding: 10px 11px;
-
-    border: 1px solid #b9c2cb;
-
-    border-radius: 8px;
-
-    background: white;
-
-    font: inherit;
-}
-
-
-/* Keyboard accessibility */
-
-input:focus,
-select:focus {
-
-    outline: 3px solid #b9d6ff;
-
-    outline-offset: 1px;
-}
-
-
-/* =========================
-   CHART + FEATURES
-========================= */
-
-.grid-two {
-
-    display: grid;
-
-    grid-template-columns:
-        1.5fr 1fr;
-
-    gap: 18px;
-
-    margin-bottom: 18px;
-}
-
-
-.chart-card h2,
-.info-card h2,
-.table-card h2 {
-
-    margin: 0 0 4px;
-}
-
-
-/* =========================
-   CHART
-========================= */
-
-.chart {
-
-    display: flex;
-
-    align-items: end;
-
-    gap: 12px;
-
-    height: 250px;
-
-    padding: 20px 4px 0;
-
-    border-bottom: 1px solid #ccd3da;
-}
-
-
-.bar-item {
-
-    height: 100%;
-
-    flex: 1;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: end;
-
-    align-items: center;
-
-    gap: 5px;
-}
-
-
-.bar {
-
-    width: min(42px, 80%);
-
-    min-height: 4px;
-
-    border-radius: 6px 6px 0 0;
-
-    background: #4b657a;
-}
-
-
-.bar-label {
-
-    font-size: 0.72rem;
-
-    max-width: 60px;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-}
-
-
-.bar-value {
-
-    font-size: 0.75rem;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   FEATURES
-========================= */
-
-.info-card li {
-
-    margin: 10px 0;
-}
-
-
-/* =========================
-   TABLE
-========================= */
-
-.table-heading p {
-
-    margin: 0;
-
-    color: #65717d;
-
-    font-size: 0.9rem;
-}
-
-
-.table-wrap {
-
-    overflow-x: auto;
-
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
     margin-top: 15px;
 }
 
-
-table {
-
-    width: 100%;
-
-    border-collapse: collapse;
-
-    min-width: 650px;
+.form-buttons {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
 }
 
-
-th,
-td {
-
-    text-align: left;
-
-    padding: 13px 10px;
-
-    border-bottom: 1px solid #e7eaed;
-}
-
-
-th {
-
-    background: #f7f8fa;
-
-    font-size: 0.82rem;
-}
-
-
-td {
-
-    font-size: 0.9rem;
-}
-
-
-/* =========================
-   STATUS BADGES
-========================= */
-
-.badge {
-
-    display: inline-block;
-
-    padding: 4px 8px;
-
-    border-radius: 20px;
-
-    font-size: 0.75rem;
-
+.btn {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
     font-weight: bold;
 }
 
+.primary {
+    background: #18212b;
+    color: white;
+}
 
-.badge.excellent {
+.secondary {
+    background: #e8edf2;
+    color: #18212b;
+}
 
-    background: #e4f5e9;
+.btn:hover {
+    opacity: 0.85;
 }
 
 
-.badge.good {
+/* =========================
+   ACTION BUTTONS
+========================= */
 
+.edit-btn,
+.delete-btn {
+    border: none;
+    padding: 6px 9px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    margin-right: 4px;
+}
+
+.edit-btn {
     background: #e8f0f7;
+    color: #18212b;
 }
 
-
-.badge.needs {
-
-    background: #fff0d9;
+.delete-btn {
+    background: #ffe4e4;
+    color: #a00000;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-
-    text-align: center;
-
-    color: #65717d;
-
-    padding: 25px 20px;
-
-    font-size: 0.85rem;
-}
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 850px) {
-
-    .stats {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-
-    .controls {
-
-        display: block;
-    }
-
-
-    .control-grid {
-
-        margin-top: 15px;
-
-        min-width: 0;
-    }
-
-
-    .grid-two {
-
-        grid-template-columns: 1fr;
-    }
-
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.75;
 }
 
 
@@ -489,58 +86,25 @@ footer {
    MOBILE
 ========================= */
 
+@media (max-width: 850px) {
+
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
 @media (max-width: 560px) {
 
-    .topbar {
-
-        padding: 30px 16px;
-    }
-
-
-    .container {
-
-        padding: 20px 14px;
-    }
-
-
-    .stats {
-
-        grid-template-columns:
-            1fr 1fr;
-
-        gap: 10px;
-    }
-
-
-    .card {
-
-        padding: 16px;
-    }
-
-
-    .control-grid {
-
+    .form-grid {
         grid-template-columns: 1fr;
     }
 
-
-    .chart {
-
-        gap: 5px;
-
-        height: 220px;
+    .form-buttons {
+        flex-direction: column;
     }
 
-
-    .bar-label {
-
-        font-size: 0.65rem;
+    .btn {
+        width: 100%;
     }
-
-
-    .stat strong {
-
-        font-size: 1.5rem;
-    }
-
 }
