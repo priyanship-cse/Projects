@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Interactive FAQ Accordion</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <noscript>
+        <style>
+            .accordion-content {
+                display: block !important;
+                max-height: none !important;
+                padding: 15px 20px !important;
+            }
+        </style>
+    </noscript>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="accordion-section">
+
+            <h1>Frequently Asked Questions</h1>
+
+            <p class="subtitle">
+                Click on a question to view its answer.
+            </p>
+
+            <div class="accordion" id="accordion">
+
+                <!-- Item 1 -->
+                <div class="accordion-item">
+
+                    <button
+                        class="accordion-header"
+                        aria-expanded="false"
+                        aria-controls="content-1"
+                        id="header-1">
+
+                        <span>What is an Interactive Accordion?</span>
+
+                        <span class="icon" aria-hidden="true">+</span>
+
+                    </button>
+
+                    <div
+                        class="accordion-content"
+                        id="content-1"
+                        role="region"
+                        aria-labelledby="header-1">
+
+                        <p>
+                            An interactive accordion is a user interface
+                            component that allows users to expand and
+                            collapse sections to view information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Item 2 -->
+                <div class="accordion-item">
+
+                    <button
+                        class="accordion-header"
+                        aria-expanded="false"
+                        aria-controls="content-2"
+                        id="header-2">
+
+                        <span>Why is JavaScript used in this component?</span>
+
+                        <span class="icon" aria-hidden="true">+</span>
+
+                    </button>
+
+                    <div
+                        class="accordion-content"
+                        id="content-2"
+                        role="region"
+                        aria-labelledby="header-2">
+
+                        <p>
+                            JavaScript handles user interactions, DOM
+                            manipulation, state changes, keyboard navigation,
+                            and accessibility attributes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Item 3 -->
+                <div class="accordion-item">
+
+                    <button
+                        class="accordion-header"
+                        aria-expanded="false"
+                        aria-controls="content-3"
+                        id="header-3">
+
+                        <span>Is this component responsive?</span>
+
+                        <span class="icon" aria-hidden="true">+</span>
+
+                    </button>
+
+                    <div
+                        class="accordion-content"
+                        id="content-3"
+                        role="region"
+                        aria-labelledby="header-3">
+
+                        <p>
+                            Yes. The layout automatically adjusts for mobile,
+                            tablet, and desktop screens using responsive CSS.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Item 4 -->
+                <div class="accordion-item">
+
+                    <button
+                        class="accordion-header"
+                        aria-expanded="false"
+                        aria-controls="content-4"
+                        id="header-4">
+
+                        <span>Does it support keyboard navigation?</span>
+
+                        <span class="icon" aria-hidden="true">+</span>
+
+                    </button>
+
+                    <div
+                        class="accordion-content"
+                        id="content-4"
+                        role="region"
+                        aria-labelledby="header-4">
+
+                        <p>
+                            Yes. Users can navigate between accordion buttons
+                            using Arrow Up, Arrow Down, Home, and End keys.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

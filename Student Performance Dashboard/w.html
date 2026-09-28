@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <meta name="description"
+        content="Student Performance Dashboard with interactive data, filtering and sorting.">
+
+    <title>Student Performance Dashboard</title>
+
+    <link rel="stylesheet" href="w.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="topbar">
+        <div class="header-content">
+
+            <p class="eyebrow">WEEK 5 • FINAL PROJECT</p>
+
+            <h1>Student Performance Dashboard</h1>
+
+            <p class="subtitle">
+                A responsive and interactive mini web application.
+            </p>
+
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Summary Cards -->
+        <section class="stats" aria-label="Dashboard Summary">
+
+            <article class="card stat">
+                <span>Total Students</span>
+                <strong id="totalStudents">0</strong>
+            </article>
+
+            <article class="card stat">
+                <span>Average Marks</span>
+                <strong id="avgMarks">0%</strong>
+            </article>
+
+            <article class="card stat">
+                <span>Average Attendance</span>
+                <strong id="avgAttendance">0%</strong>
+            </article>
+
+            <article class="card stat">
+                <span>Excellent Students</span>
+                <strong id="excellent">0</strong>
+            </article>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="card controls" aria-labelledby="controlsTitle">
+
+            <div class="control-info">
+
+                <h2 id="controlsTitle">
+                    Explore Student Data
+                </h2>
+
+                <p>
+                    Search, filter and sort the student records.
+                </p>
+
+            </div>
+
+
+            <div class="control-grid">
+
+                <!-- Search -->
+                <label>
+                    Search Student
+
+                    <input
+                        type="search"
+                        id="search"
+                        placeholder="Enter student name..."
+                        aria-label="Search students by name"
+                    >
+                </label>
+
+
+                <!-- Filter -->
+                <label>
+                    Filter by Status
+
+                    <select id="statusFilter"
+                        aria-label="Filter students by status">
+
+                        <option value="All">
+                            All Statuses
+                        </option>
+
+                        <option value="Excellent">
+                            Excellent
+                        </option>
+
+                        <option value="Good">
+                            Good
+                        </option>
+
+                        <option value="Needs Attention">
+                            Needs Attention
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <!-- Sort -->
+                <label>
+                    Sort Students
+
+                    <select id="sortBy"
+                        aria-label="Sort student records">
+
+                        <option value="marks-desc">
+                            Marks: High to Low
+                        </option>
+
+                        <option value="marks-asc">
+                            Marks: Low to High
+                        </option>
+
+                        <option value="attendance-desc">
+                            Attendance: High to Low
+                        </option>
+
+                        <option value="name-asc">
+                            Name: A to Z
+                        </option>
+
+                    </select>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- Chart + Features -->
+        <section class="grid-two">
+
+            <!-- Chart -->
+            <article class="card chart-card"
+                aria-labelledby="chartTitle">
+
+                <h2 id="chartTitle">
+                    Marks Overview
+                </h2>
+
+                <div
+                    id="chart"
+                    class="chart"
+                    aria-label="Student marks bar chart">
+                </div>
+
+            </article>
+
+
+            <!-- Features -->
+            <article class="card info-card">
+
+                <h2>
+                    Project Features
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Static JSON data
+                    </li>
+
+                    <li>
+                        JavaScript Fetch API
+                    </li>
+
+                    <li>
+                        Search functionality
+                    </li>
+
+                    <li>
+                        Filtering and sorting
+                    </li>
+
+                    <li>
+                        Responsive design
+                    </li>
+
+                    <li>
+                        Accessibility and ARIA
+                    </li>
+
+                    <li>
+                        Performance optimization
+                    </li>
+
+                </ul>
+
+            </article>
+
+        </section>
+
+
+        <!-- Data Table -->
+        <section class="card table-card"
+            aria-labelledby="tableTitle">
+
+            <div class="table-heading">
+
+                <div>
+
+                    <h2 id="tableTitle">
+                        Student Records
+                    </h2>
+
+                    <p
+                        id="resultCount"
+                        aria-live="polite">
+                        0 records
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Name</th>
+
+                            <th>Course</th>
+
+                            <th>Semester</th>
+
+                            <th>Marks</th>
+
+                            <th>Attendance</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        Week 5 Mini Web Application
+        <br>
+
+        Built using HTML, CSS, JavaScript and JSON
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="w.js" defer></script>
+
+</body>
+
+</html>

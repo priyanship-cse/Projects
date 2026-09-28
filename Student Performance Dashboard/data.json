@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Priyanshi",
+        "course": "CSE",
+        "semester": 2,
+        "marks": 87,
+        "attendance": 92,
+        "status": "Excellent"
+    },
+
+    {
+        "name": "Prashant",
+        "course": "CSE",
+        "semester": 2,
+        "marks": 78,
+        "attendance": 84,
+        "status": "Good"
+    },
+
+    {
+        "name": "Ankur",
+        "course": "CSE",
+        "semester": 2,
+        "marks": 91,
+        "attendance": 95,
+        "status": "Excellent"
+    },
+
+    {
+        "name": "Riya",
+        "course": "CSE",
+        "semester": 2,
+        "marks": 72,
+        "attendance": 79,
+        "status": "Good"
+    },
+
+    {
+        "name": "Vardan",
+        "course": "CSE",
+        "semester": 2,
+        "marks": 65,
+        "attendance": 74,
+        "status": "Needs Attention"
+    },
+
+    {
+        "name": "Arya",
+        "course": "CSE",
+        "semester": 2,
+        "marks": 83,
+        "attendance": 88,
+        "status": "Good"
+    },
+
+    {
+        "name": "Riyan",
+        "course": "CSE",
+        "semester": 2,
+        "marks": 94,
+        "attendance": 97,
+        "status": "Excellent"
+    },
+
+    {
+        "name": "Riva",
+        "course": "CSE",
+        "semester": 2,
+        "marks": 69,
+        "attendance": 76,
+        "status": "Needs Attention"
+    }
+]
